@@ -7,4 +7,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\Michał\Desktop\Programowanko\C# nauka\Kurs youtube\11. Projekt Końcowy\Game\Game\.editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="C:\Users\Michał\Desktop\Programowanko\C# nauka\Kurs youtube\11. Projekt Końcowy\Game\Game\.editorconfig" />
+  </ItemGroup>
+
 </Project>
