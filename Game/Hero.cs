@@ -8,7 +8,11 @@ namespace Game
 {
     enum Colors // nadanie poszczególnym bohaterom kolorów
     {
-        red, green
+        purple, yellow
+    }
+    interface ISpecialAttack
+    {
+        void SpecialAttack(Hero hero);
     }
     abstract class Hero // nie chcemy instancjonować tej klasy, dlatego robimy ją abstrakcyjną
     {
@@ -38,6 +42,8 @@ namespace Game
         public Colors Color { get; set; } // będziemy je ustawiać z zewnątrz
         
         protected Random rnd = new Random();
+
+        public bool UsedSpecialAttack { get; set; } = false;
 
         public Hero(string name, int fullhp, Colors color)
         {

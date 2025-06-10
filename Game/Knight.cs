@@ -16,14 +16,14 @@ namespace Game
         {
             int hp = rnd.Next(50, 201); // losowa wartość między 100 a 150
             hero.ActualHP -= hp;
-            Console.WriteLine($"\nGracz {Name} zadał {hp} punktów obrażeń graczowi {hero.Name}.");
+            Console.WriteLine($"\nPlayer {Name} hit {hp} damage points to the player {hero.Name}.");
         }
 
         public override void Heal()
         {
             int hp = rnd.Next(50, 101);
             ActualHP += hp;
-            Console.WriteLine($"\nGracz {Name} uzdrowił się za {hp} punktów życia.");
+            Console.WriteLine($"\nPlayer {Name} healt himself for {hp} hp.");
         }
     }
 }

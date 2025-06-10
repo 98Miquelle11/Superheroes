@@ -12,8 +12,8 @@ namespace Game
         static void Main(string[] args)
         {
             List<Hero> heroes = new List<Hero>();
-            heroes.Add(new Wizard("Wizard", 500, Colors.green));
-            heroes.Add(new Wizard("Knight", 700, Colors.red));
+            heroes.Add(new Wizard("Wizard", 500, Colors.yellow));
+            heroes.Add(new Wizard("Knight", 700, Colors.purple));
 
             Hero player1;
             Hero player2;
@@ -36,11 +36,11 @@ namespace Game
                 Console.Clear();
                 switch (player1.Color)
                 {
-                    case Colors.red:
-                        Console.ForegroundColor = ConsoleColor.Red;
+                    case Colors.yellow:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         break;
-                    case Colors.green:
-                        Console.ForegroundColor = ConsoleColor.Green;
+                    case Colors.purple:
+                        Console.ForegroundColor = ConsoleColor.Magenta;
                         break;
                     default:
                         break;
@@ -50,11 +50,11 @@ namespace Game
 
                 switch (player2.Color)
                 {
-                    case Colors.red:
-                        Console.ForegroundColor = ConsoleColor.Red;
+                    case Colors.yellow:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         break;
-                    case Colors.green:
-                        Console.ForegroundColor = ConsoleColor.Green;
+                    case Colors.purple:
+                        Console.ForegroundColor = ConsoleColor.Magenta;
                         break;
                     default:
                         break;
@@ -70,10 +70,15 @@ namespace Game
                 Hero actualPlayer = isPlayer1Turn ? player2 : player2;
                 Hero otherPlayer = isPlayer1Turn ? player2 : player1;
 
-                Console.WriteLine($"\nRuch gracza: {(isPlayer1Turn ? 1 : 2)}");
-                Console.WriteLine("Co chcesz zrobić?");
-                Console.WriteLine("1. Podstawowy atak");
-                Console.WriteLine("2. Ulecz");
+                Console.WriteLine($"\nPlayer's move: {(isPlayer1Turn ? 1 : 2)}");
+                Console.WriteLine("What do you want to do?");
+                Console.WriteLine("1. Basic attack");
+                Console.WriteLine("2. Heal");
+
+                if (actualPlayer is ISpecialAttack && actualPlayer.UsedSpecialAttack)
+                {
+                    Console.WriteLine("3. Special attack");
+                }
 
                 ConsoleKey key;
                 do
@@ -82,23 +87,37 @@ namespace Game
 
                     switch (key)
                     {
-                        case ConsoleKet.D1:
-                            actualPlayerPlayer.DefaultAttack(otherPlayer);
+                        case ConsoleKey.D1:
+                            actualPlayer.DefaultAttack(otherPlayer);
                             break;
                         case ConsoleKey.D2:
                             actualPlayer.Heal();
-                        default;
+                            break;
+                        case ConsoleKey.D3:
+                            if (actualPlayer is ISpecialAttack && !actualPlayer.UsedSpecialAttack)
+                            {
+                                ((ISpecialAttack)actualPlayer).SpecialAttack(otherPlayer); // rzutowanie
+                                actualPlayer.UsedSpecialAttack = true;
+                            }
+                            else
+                            {
+                                actualPlayer.DefaultAttack(otherPlayer);
+                            }
+                            break;
+                        default:
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Nie ma takiego ruchu.");
+                            Console.WriteLine("There is no such action.");
                             Console.ResetColor();
                             break;
                     }
-                } while (key != ConsoleKey.D1 && key != ConsoleKey.D2);
+                } while (key != ConsoleKey.D1 && key != ConsoleKey.D2 && key != ConsoleKey.D3);
 
                 if (player1.ActualHP == 0 || player2.ActualHP == 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Niestety!");
+                    Console.WriteLine($"Player {(isPlayer1Turn ? 2 : 1)} died.");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"Player {(isPlayer1Turn ? 1 : 2)} wins!");
                     Console.ResetColor();
                 }
                 else
@@ -115,7 +134,7 @@ namespace Game
         static bool ChooseHero(out Hero hero, int player, ref List<Hero> heroes) // zwraca referencję i dba o to, aby zmienna została co najmniej zmieniona albo przypisana po raz pierwszy
         {
             Console.Clear();
-            Console.WriteLine($"Gracz {player} wybiera swoją postać:");
+            Console.WriteLine($"Player {player} is choosing his hero:");
 
             for (int i = 0; i < heroes.Count; i++)
             {
@@ -134,7 +153,7 @@ namespace Game
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Nie ma takiego bohatera.");
+                Console.WriteLine("There is no such hero.");
                 Console.ResetColor();
                 Console.ReadKey();
                 hero = null;
