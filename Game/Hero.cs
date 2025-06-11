@@ -20,14 +20,13 @@ namespace Game
         public int FullHP { get; } // ta właściwość również nie będzie zmieniana w trakcie trwania programu
         private int actualHP;
 
-        // Name i FullHP będziemy ustawiać z konstruktora wewnątrz
+        // Name i FullHP będziemy zapisywać z konstruktora wewnątrz
 
         public int ActualHP
         {
             get { return actualHP; }
             set
-            {   // będziemy ją zmieniać pod pewnymi warunkami
-                if (value < 0)
+            {   if (value < 0)
                 {
                     actualHP = 0;
                 }
@@ -39,7 +38,7 @@ namespace Game
 
             }
         }
-        public Colors Color { get; set; } // będziemy je ustawiać z zewnątrz
+        public Colors Color { get; set; } // będziemy je zapisywać z zewnątrz
         
         protected Random rnd = new Random();
 
@@ -57,7 +56,7 @@ namespace Game
         public abstract void Heal();
         public override string ToString()
         {
-            return $"{Name} - {ActualHP}/{FullHP}";
+            return $"{Name} - {ActualHP}/{FullHP} hp";
         }
     }
 }

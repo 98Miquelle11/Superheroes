@@ -11,9 +11,8 @@ namespace Game
     {
         static void Main(string[] args)
         {
-            List<Hero> heroes = new List<Hero>();
-            heroes.Add(new Wizard("Wizard", 500, Colors.yellow));
-            heroes.Add(new Wizard("Knight", 700, Colors.purple));
+            List<Hero> heroes = [new Wizard("Wizard", 500, Colors.yellow), 
+                new Wizard("Knight", 700, Colors.purple)];
 
             Hero player1;
             Hero player2;
@@ -75,7 +74,7 @@ namespace Game
                 Console.WriteLine("1. Basic attack");
                 Console.WriteLine("2. Heal");
 
-                if (actualPlayer is ISpecialAttack && actualPlayer.UsedSpecialAttack)
+                if (actualPlayer is ISpecialAttack && !actualPlayer.UsedSpecialAttack)
                 {
                     Console.WriteLine("3. Special attack");
                 }
@@ -101,12 +100,14 @@ namespace Game
                             }
                             else
                             {
-                                actualPlayer.DefaultAttack(otherPlayer);
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("\nThe action was used...");
+                                Console.ResetColor();
                             }
                             break;
                         default:
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("There is no such action.");
+                            Console.WriteLine("\nThere is no such action.");
                             Console.ResetColor();
                             break;
                     }
@@ -122,7 +123,7 @@ namespace Game
                 }
                 else
                 {
-
+                    isPlayer1Turn = !isPlayer1Turn;
                 }
 
                     Console.ReadKey();

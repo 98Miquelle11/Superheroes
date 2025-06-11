@@ -28,7 +28,7 @@ namespace Game
 
         public void SpecialAttack(Hero hero)
         {
-            int hp = rnd.Next(150, 251); // losowa wartość między 100 a 150
+            int hp = rnd.Next(200, 251);
             hero.ActualHP -= hp;
             Console.WriteLine($"\nSpecial Attack: Player {Name} hit {hp} damage points to the player {hero.Name}.");
         }
