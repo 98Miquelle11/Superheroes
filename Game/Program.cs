@@ -12,7 +12,7 @@ namespace Game
         static void Main(string[] args)
         {
             List<Hero> heroes = [new Wizard("Wizard", 500, Colors.yellow), 
-                new Wizard("Knight", 700, Colors.purple)];
+                new Knight("Knight", 700, Colors.purple)];
 
             Hero player1;
             Hero player2;
@@ -44,7 +44,7 @@ namespace Game
                     default:
                         break;
                 }
-                Console.WriteLine("Payer 1");
+                Console.WriteLine("Player 1");
                 Console.WriteLine(player1);
 
                 switch (player2.Color)
@@ -60,16 +60,16 @@ namespace Game
                 }
                 Console.CursorTop = 0;
                 Console.CursorLeft = 25;
-                Console.WriteLine("Payer 2");
+                Console.WriteLine("Player 2");
                 Console.CursorTop = 1;
                 Console.CursorLeft = 25;
                 Console.WriteLine(player2);
                 Console.ResetColor();
 
-                Hero actualPlayer = isPlayer1Turn ? player2 : player2;
+                Hero actualPlayer = isPlayer1Turn ? player1 : player2;
                 Hero otherPlayer = isPlayer1Turn ? player2 : player1;
 
-                Console.WriteLine($"\nPlayer's move: {(isPlayer1Turn ? 1 : 2)}");
+                Console.WriteLine($"\nPlayer's {(isPlayer1Turn ? 1 : 2)} move.");
                 Console.WriteLine("What do you want to do?");
                 Console.WriteLine("1. Basic attack");
                 Console.WriteLine("2. Heal");
@@ -100,9 +100,18 @@ namespace Game
                             }
                             else
                             {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("\nThe action was used...");
-                                Console.ResetColor();
+                                if (actualPlayer is not ISpecialAttack)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\nThere is no such action.");
+                                    Console.ResetColor();
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("\nThe action was used...");
+                                    Console.ResetColor();
+                                }
                             }
                             break;
                         default:
