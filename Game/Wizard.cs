@@ -14,7 +14,7 @@ namespace Game
 
         public override void DefaultAttack(Hero hero)
         {
-            int hp = rnd.Next(100,151); // losowa wartość między 100 a 150
+            int hp = rnd.Next(100,151);
             hero.ActualHP -= hp;
             Console.WriteLine($"\nPlayer {Name} hit {hp} damage points to the player {hero.Name}.");
         }

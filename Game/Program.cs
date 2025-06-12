@@ -59,7 +59,7 @@ namespace Game
                         break;
                 }
                 Console.CursorTop = 0;
-                Console.CursorLeft = 25; // gracz 2 będzie po prawej stronie
+                Console.CursorLeft = 25;
                 Console.WriteLine("Payer 2");
                 Console.CursorTop = 1;
                 Console.CursorLeft = 25;
@@ -95,7 +95,7 @@ namespace Game
                         case ConsoleKey.D3:
                             if (actualPlayer is ISpecialAttack && !actualPlayer.UsedSpecialAttack)
                             {
-                                ((ISpecialAttack)actualPlayer).SpecialAttack(otherPlayer); // rzutowanie
+                                ((ISpecialAttack)actualPlayer).SpecialAttack(otherPlayer);
                                 actualPlayer.UsedSpecialAttack = true;
                             }
                             else
@@ -132,7 +132,7 @@ namespace Game
 
             Console.ReadKey();
         }
-        static bool ChooseHero(out Hero hero, int player, ref List<Hero> heroes) // zwraca referencję i dba o to, aby zmienna została co najmniej zmieniona albo przypisana po raz pierwszy
+        static bool ChooseHero(out Hero hero, int player, ref List<Hero> heroes)
         {
             Console.Clear();
             Console.WriteLine($"Player {player} is choosing his hero:");

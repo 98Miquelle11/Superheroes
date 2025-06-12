@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    enum Colors // nadanie poszczególnym bohaterom kolorów
+    enum Colors
     {
         purple, yellow
     }
@@ -14,13 +14,11 @@ namespace Game
     {
         void SpecialAttack(Hero hero);
     }
-    abstract class Hero // nie chcemy instancjonować tej klasy, dlatego robimy ją abstrakcyjną
+    abstract class Hero
     {
-        public string Name { get; } // nazwa tylko do odczytu, ponieważ nie chcę jej zmieniać w trakcie programu
-        public int FullHP { get; } // ta właściwość również nie będzie zmieniana w trakcie trwania programu
+        public string Name { get; }
+        public int FullHP { get; }
         private int actualHP;
-
-        // Name i FullHP będziemy zapisywać z konstruktora wewnątrz
 
         public int ActualHP
         {
@@ -38,7 +36,7 @@ namespace Game
 
             }
         }
-        public Colors Color { get; set; } // będziemy je zapisywać z zewnątrz
+        public Colors Color { get; set; }
         
         protected Random rnd = new Random();
 
@@ -52,7 +50,7 @@ namespace Game
             Color = color;
         }
 
-        public abstract void DefaultAttack(Hero hero); // obiekt Hero będzie obiektem atakowanym
+        public abstract void DefaultAttack(Hero hero);
         public abstract void Heal();
         public override string ToString()
         {
