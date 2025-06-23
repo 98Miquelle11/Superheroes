@@ -14,6 +14,6 @@ A simple game, where each player selects a hero and engages in a turn-based duel
 * Easy to extend with new character types or abilities.
 
 ## How to run
-1. Clone the repository - open your terminal and run: git clone https://github.com/98Miquelle11/superheroes.git
-2. If you just want to run a game, open publish/Game.exe
-3. If you want to open the project, open the solution file Game.sln in Visual Studio 2022 (or later), go to Build > Build Solution, then click Start to launch a game.
+1. Clone the repository - open your terminal and run: 'git clone https://github.com/98Miquelle11/superheroes.git'
+2. If you just want to run a game, open **publish/Game.exe**
+3. If you want to open the project, open the solution file **Game.sln** in **Visual Studio 2022 (or later)**, go to **Build > Build Solution**, then click **Start** to launch a game.
