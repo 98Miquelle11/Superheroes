@@ -1,6 +1,8 @@
 # Hero duel game "Superheroes"
 A simple game, where each player selects a hero and engages in a turn-based duel. This is my final project for [C# Course - Fast Start (Programming for Beginners)](https://eduj.pl/produkt/kurs_csharp_szybki_start_programowanie_dla_poczatkujacych)
 
+![Image](https://github.com/user-attachments/assets/fbf65144-97ae-4516-8e65-0a4cd76c3452)
+
 ## Tech stack
 * C# version 13.0,
 * .NET 9.0,
