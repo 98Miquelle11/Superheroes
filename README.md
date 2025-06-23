@@ -1,7 +1,5 @@
 # Hero duel game "Superheroes"
-
-# Console App
-A simple command-line application based two-player game, where each player selects a hero and engages in a turn-based duel. The game includes attack, heal and special abilities based on hero class.
+A simple command-line application based two-player game, where each player selects a hero and engages in a turn-based duel. The game includes attack, heal and special abilities based on hero class. This is my final project for [C# Course - Fast Start (Programming for Beginners)](https://eduj.pl/produkt/kurs_csharp_szybki_start_programowanie_dla_poczatkujacych)
 
 # Classes
 
