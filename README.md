@@ -2,7 +2,7 @@
 A simple game, where each player selects a hero and engages in a turn-based duel. This is my final project for [C# Course - Fast Start (Programming for Beginners)](https://eduj.pl/produkt/kurs_csharp_szybki_start_programowanie_dla_poczatkujacych)
 
 ## Tech stack
-* C#,
+* C# version 13.0,
 * .NET 9.0,
 * Visual Studio 2022.
 
